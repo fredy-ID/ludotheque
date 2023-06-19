@@ -1,0 +1,20 @@
+# version spécifie la version de la syntaxe Docker Compose.
+# Sous services, nous définissons deux services: web pour Django et client pour Vue.js.
+# build indique le chemin vers le répertoire contenant le Dockerfile pour chaque service.
+# command pour le service web indique la commande à exécuter pour démarrer le serveur Django.
+# volumes est utilisé pour monter le code source dans le conteneur, ce qui est utile pendant le développement.
+# ports mappe les ports entre le conteneur et l'hôte. Par exemple, le port 8000 du conteneur Django est mappé sur le port 8000 de votre machine.
+
+version: '3.8'
+
+services:
+  web:
+    build: ./
+    command: python manage.py runserver
+    volumes:
+      - .:/
+    ports:
+      - "8080:8080"
+
+
+    
