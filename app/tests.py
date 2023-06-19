@@ -39,16 +39,3 @@ class GameModelTest(TestCase):
         
         self.assertEqual(self.game._meta.get_field('name').db_column, 'name_game')
         self.assertEqual(self.game._meta.get_field('quantity').db_column, 'quantity_game')
-
-# class GameTestCase(TestCase):
-#     def setUp(self):
-#         Game.objects.create(name="conan", quantity=50)
-#         Game.objects.create(name="v rising", quantity=3)
-
-#     def test_get_games(self):
-#         """Games that can speak are correctly identified"""
-#         conan = Game.objects.get(name="conan")
-#         v_rising = Game.objects.get(name="v rising")
-#         self.assertEqual(lion.speak(), 'The lion says 9')
-#         self.assertEqual(cat.speak(), 'The cat says "meow"')
-
