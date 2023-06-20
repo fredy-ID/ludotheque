@@ -46,19 +46,19 @@ ou
 ### Unitest (TestCode) :
 
 Un package django spécialisé dans les tests unitaires, installé avec Django
-Répertoire : app/tests.py
+- Répertoire : `app/tests.py`
 - test : `py manage.py test`
 
 ### Pytest :
 
 Un package python servant à faire des test
-Répertoire : app/test_pytest.py
+- Répertoire : `app/test_pytest.py`
 - test : `pytest app/test_pytest.py`
 
 ### Pytest-django :
 
 Un package permettant d'intégrer pytest à django
-Répertoire : app/test_pytest.py
+- Répertoire : `app/test_pytest.py`
 - test : `pytest`
 
 # FAQ
