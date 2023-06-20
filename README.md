@@ -37,4 +37,23 @@ ou
 
 # Utilisation
 
+## Url
 - API (GET) : `localhost/game/` permet de créer ou d'accéder à tout les jeux
+
+## Tests
+
+### Unitest (TestCode) :
+Répertoire : app/tests.py
+- Unitest nativement intégré à django : `py manage.py test`
+
+### Pytest :
+
+Un package python servant à faire des test
+Répertoire : app/test_pytest.py
+- pytest : `pytest app/test_pytest.py`
+
+### Pytest-django :
+
+Un package permettant d'intégrer nativement pytest à django
+Répertoire : app/test_pytest.py
+- pytest-django : `pytest`
