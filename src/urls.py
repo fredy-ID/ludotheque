@@ -21,7 +21,7 @@ from rest_framework import routers
 from app.views import GameViewSet
 
 router = routers.DefaultRouter()
-router.register(r'game', GameViewSet)
+router.register(r'game', GameViewSet, basename="game")
 
 urlpatterns = [
     path("admin/", admin.site.urls),
