@@ -1,10 +1,33 @@
-from django.test import TestCase
+from django.test import TestCase, Client
 from app.models import Game
 from django.urls import reverse
 from rest_framework.test import APITestCase
 from rest_framework import status
 from .serializers import GameSerializer
 
+class GameViewSetTest(TestCase):
+    def setUp(self):
+        self.client = Client()
+        self.game = Game.objects.create(name="Monopoly", quantity=5)
+
+    def test_get_game_list(self):
+        url = '/game/'  # URL de la vue GameViewSet
+        response = self.client.get(url)
+        games = Game.objects.all()
+        serializer = GameSerializer(games, many=True)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data, serializer.data)
+
+class MyViewTest(TestCase):
+    def setUp(self):
+        self.client = Client()
+
+    def test_my_view(self):
+        url = reverse('game-list')
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
+        print(response)
+        self.assertContains(response, "Allow: GET, POST, HEAD, OPTIONS")
 
 class GameAPITest(APITestCase):
 
