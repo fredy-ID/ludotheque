@@ -59,7 +59,7 @@ class GameAPITest(APITestCase):
 
         self.assertCodeAndContent(response, serializer=serializer, status=status.HTTP_200_OK)
 
-    def test_get_specific_game_detail(self):
+    def test_get_specific_game(self):
         """GET GAME BY ID TEST"""
         url = reverse("game-detail", kwargs={"pk": self.game.pk})
         response = self.client.get(url)
