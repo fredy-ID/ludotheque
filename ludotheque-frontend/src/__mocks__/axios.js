@@ -1,2 +1,1 @@
-import mockAxios from 'vitest-mock-axios';
-export default mockAxios;
+// const get = Promise.resolve()
