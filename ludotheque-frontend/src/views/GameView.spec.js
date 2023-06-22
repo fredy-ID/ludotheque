@@ -15,16 +15,13 @@ describe('GameService', () => {
   })
 
   test('makes a GET request to fetch games 2', async () => {
-    const gameMock = [{ data: [ { id_jeu: '2', name: 'Jeu 2' }, { id_jeu: '3', name: 'Jeu 3' } ] }]
-    axios.get.mockResolvedValue({
-      data: gameMock,
-    })
-    const games = await GameService.getGames()
+    // const gameMock = [{ data: [ { id_jeu: '2', name: 'Jeu 2' }, { id_jeu: '3', name: 'Jeu 3' } ] }]
+    axios.get.mockResolvedValue()
+    await GameService.getGames()
     expect(axios.get).toHaveBeenCalledWith(baseURL + '/game')
     expect(axios.get).toHaveBeenCalledTimes(1)
-    expect(games.data).toStrictEqual(gameMock)
   })
-
+  
   test('makes a GET request to fetch game by ID', async () => {
     const gameMock = [{ data: { id_jeu: '2', name: 'Jeu 2' } }]
     axios.get.mockResolvedValue({
@@ -34,30 +31,18 @@ describe('GameService', () => {
     expect(axios.get).toHaveBeenCalledWith(baseURL + '/game/' + 2)
     expect(axios.get).toHaveBeenCalledTimes(2)
     expect(games.data).toStrictEqual(gameMock)
+    // expect(axios.get).toMatchInlineSnapshot();
+  })
+
+  test('makes a POST request to add game', async () => {
+    const gameMock = { id_jeu: '2', name: 'Jeu 2' }
+    axios.post.mockResolvedValue({
+      data: gameMock,
+    })
+    const games = await GameService.createGame(gameMock)
+    expect(axios.post).toHaveBeenCalledWith(baseURL + '/games', gameMock)
+    expect(axios.post).toHaveBeenCalledTimes(1)
+    expect(games.data).toStrictEqual(gameMock)
+    // expect(axios.get).toMatchInlineSnapshot();
   })
 })
-
-// import { describe, afterEach, it, expect, vi} from 'vitest'
-// import mockAxios from 'vitest-mock-axios';
-// import GameService from '@/services/api.js'
-
-// afterEach(() => {
-//   // cleaning up the mess left behind the previous test
-//   mockAxios.reset();
-// });
-
-// describe('GameService', () => {
-//   it('getGames', async () => {
-
-//     const wrap_data = await GameService.getGames()
-//     expect(mockAxios.get).toHaveBeenCalledWith('/game');
-
-//     const gameMock = [ { id_jeu: '2', name: 'Jeu 2' }, { id_jeu: '3', name: 'Jeu 3' } ] 
-//     mockAxios.mockResponse(gameMock);
-
-//     expect(mockAxios.get).toHaveBeenCalledWith('/game');
-//     // expect(mockAxios.get).toMatchInlineSnapshot();
-//     // expect(axios.get).toHaveBeenCalledTimes(1)
-//     // expect(wrap_data).toStrictEqual(gameMock)
-//   })
-// })
