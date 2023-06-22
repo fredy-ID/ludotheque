@@ -1,8 +1,12 @@
-import { describe, expect, test, vi } from 'vitest'
+import { afterEach, describe, expect, test, vi } from 'vitest'
 import GameService, { baseURL } from '@/services/api.js'
 import axios from 'axios'
 
 vi.mock('axios')
+
+afterEach(() => {
+  vi.clearAllMocks()
+})
 
 describe('GameService', () => {
   describe('getGames', () => {
@@ -29,8 +33,9 @@ describe('GameService', () => {
     })
     const games = await GameService.getGame(2)
     expect(axios.get).toHaveBeenCalledWith(baseURL + '/game/' + 2)
-    expect(axios.get).toHaveBeenCalledTimes(2)
+    expect(axios.get).toHaveBeenCalledTimes(1)
     expect(games.data).toStrictEqual(gameMock)
+    axios.get.mock
     // expect(axios.get).toMatchInlineSnapshot();
   })
 
@@ -55,6 +60,16 @@ describe('GameService', () => {
     expect(axios.put).toHaveBeenCalledWith(baseURL + '/game/' + 2, gameMock)
     expect(axios.put).toHaveBeenCalledTimes(1)
     expect(games.data).toStrictEqual(gameMock)
+    // expect(axios.get).toMatchInlineSnapshot();
+  })
+
+  test('makes a DELETE request to update game', async () => {
+    axios.delete.mockResolvedValue()
+
+    const games = await GameService.deleteGame(2)
+    expect(axios.delete).toHaveBeenCalledWith(baseURL + '/game/' + 2)
+    expect(axios.delete).toHaveBeenCalledTimes(1)
+    expect(games).toStrictEqual()
     // expect(axios.get).toMatchInlineSnapshot();
   })
 })
