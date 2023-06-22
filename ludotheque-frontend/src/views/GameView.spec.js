@@ -19,10 +19,6 @@ describe('GameService', () => {
     const gameMock = [ { id_jeu: '2', name: 'Jeu 2' }, { id_jeu: '3', name: 'Jeu 3' } ] 
     mockAxios.mockResponse(gameMock);
 
-    
-    
-    
-
     expect(mockAxios.get).toHaveBeenCalledWith('/game');
     // expect(mockAxios.get).toMatchInlineSnapshot();
     // expect(axios.get).toHaveBeenCalledTimes(1)
