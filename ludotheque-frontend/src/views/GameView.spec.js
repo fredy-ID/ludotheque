@@ -24,6 +24,7 @@ describe('GameService', () => {
     await GameService.getGames()
     expect(axios.get).toHaveBeenCalledWith(baseURL + '/game')
     expect(axios.get).toHaveBeenCalledTimes(1)
+    // expect(axios.get).toMatchInlineSnapshot();
   })
   
   test('makes a GET request to fetch game by ID', async () => {
@@ -35,8 +36,6 @@ describe('GameService', () => {
     expect(axios.get).toHaveBeenCalledWith(baseURL + '/game/' + 2)
     expect(axios.get).toHaveBeenCalledTimes(1)
     expect(games.data).toStrictEqual(gameMock)
-    axios.get.mock
-    // expect(axios.get).toMatchInlineSnapshot();
   })
 
   test('makes a POST request to add game', async () => {
@@ -48,7 +47,6 @@ describe('GameService', () => {
     expect(axios.post).toHaveBeenCalledWith(baseURL + '/games', gameMock)
     expect(axios.post).toHaveBeenCalledTimes(1)
     expect(games.data).toStrictEqual(gameMock)
-    // expect(axios.get).toMatchInlineSnapshot();
   })
 
   test('makes a PUT request to update game', async () => {
@@ -60,7 +58,6 @@ describe('GameService', () => {
     expect(axios.put).toHaveBeenCalledWith(baseURL + '/game/' + 2, gameMock)
     expect(axios.put).toHaveBeenCalledTimes(1)
     expect(games.data).toStrictEqual(gameMock)
-    // expect(axios.get).toMatchInlineSnapshot();
   })
 
   test('makes a DELETE request to update game', async () => {
@@ -70,6 +67,5 @@ describe('GameService', () => {
     expect(axios.delete).toHaveBeenCalledWith(baseURL + '/game/' + 2)
     expect(axios.delete).toHaveBeenCalledTimes(1)
     expect(games).toStrictEqual()
-    // expect(axios.get).toMatchInlineSnapshot();
   })
 })
