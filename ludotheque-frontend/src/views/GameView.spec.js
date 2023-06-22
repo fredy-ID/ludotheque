@@ -16,13 +16,12 @@ describe('GameService', () => {
 
   test('makes a GET request to fetch games 2', async () => {
     const gameMock = [{ data: [ { id_jeu: '2', name: 'Jeu 2' }, { id_jeu: '3', name: 'Jeu 3' } ] }]
-
     axios.get.mockResolvedValue({
       data: gameMock,
     })
     const games = await GameService.getGames()
     expect(axios.get).toHaveBeenCalledWith('http://localhost:8000/api/game')
-    expect(games).toStrictEqual(gameMock)
+    expect(games.data).toStrictEqual(gameMock)
   })
 })
 
