@@ -1,5 +1,5 @@
 import { describe, expect, test, vi } from 'vitest'
-import GameService from '@/services/api.js'
+import GameService, { baseURL } from '@/services/api.js'
 import axios from 'axios'
 
 vi.mock('axios')
@@ -20,7 +20,19 @@ describe('GameService', () => {
       data: gameMock,
     })
     const games = await GameService.getGames()
-    expect(axios.get).toHaveBeenCalledWith('http://localhost:8000/api/game')
+    expect(axios.get).toHaveBeenCalledWith(baseURL + '/game')
+    expect(axios.get).toHaveBeenCalledTimes(1)
+    expect(games.data).toStrictEqual(gameMock)
+  })
+
+  test('makes a GET request to fetch game by ID', async () => {
+    const gameMock = [{ data: { id_jeu: '2', name: 'Jeu 2' } }]
+    axios.get.mockResolvedValue({
+      data: gameMock,
+    })
+    const games = await GameService.getGame(2)
+    expect(axios.get).toHaveBeenCalledWith(baseURL + '/game/' + 2)
+    expect(axios.get).toHaveBeenCalledTimes(2)
     expect(games.data).toStrictEqual(gameMock)
   })
 })
@@ -28,7 +40,6 @@ describe('GameService', () => {
 // import { describe, afterEach, it, expect, vi} from 'vitest'
 // import mockAxios from 'vitest-mock-axios';
 // import GameService from '@/services/api.js'
-
 
 // afterEach(() => {
 //   // cleaning up the mess left behind the previous test
