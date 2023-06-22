@@ -100,7 +100,7 @@ class GameAPITest(APITestCase):
 class GameModelTest(TestCase):
     def setUp(self):
         """
-        Méthode setUp pour initialiser les données de test
+        Méthode setUp pour initialiser les donnees de test
         Création d'une instance de Game à utiliser dans les tests
         """
         self.game = Game.objects.create(name="Monopoly", quantity=5)

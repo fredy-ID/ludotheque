@@ -13,27 +13,27 @@ const apiClient = axios.create({
 const GameService = {
   // Méthode pour récupérer tous les jeux
   getGames() {
-    return apiClient.get('/jeu')
+    return apiClient.get('/game')
   },
 
-  // Méthode pour récupérer un jeu spécifique par son ID
+  // Méthode pour récupérer un game spécifique par son ID
   getGame(id) {
-    return apiClient.get('/jeu/' + id)
+    return apiClient.get('/game/' + id)
   },
 
-  // Méthode pour créer un nouveau jeu
+  // Méthode pour créer un nouveau game
   createGame(game) {
     return apiClient.post('/games', game)
   },
 
-  // Méthode pour mettre à jour un jeu spécifique par son ID
+  // Méthode pour mettre à jour un game spécifique par son ID
   updateGame(id, game) {
-    return apiClient.put('/jeu/' + id, game)
+    return apiClient.put('/game/' + id, game)
   },
 
-  // Méthode pour supprimer un jeu spécifique par son ID
+  // Méthode pour supprimer un game spécifique par son ID
   deleteGame(id) {
-    return apiClient.delete('/jeu/' + id)
+    return apiClient.delete('/game/' + id)
   }
 }
 

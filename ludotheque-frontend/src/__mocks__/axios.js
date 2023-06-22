@@ -1,2 +1,2 @@
-const get = vi.fn(()=> 0)
-
+import mockAxios from 'vitest-mock-axios';
+export default mockAxios;
