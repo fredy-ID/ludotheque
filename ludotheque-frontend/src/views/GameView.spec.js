@@ -45,4 +45,16 @@ describe('GameService', () => {
     expect(games.data).toStrictEqual(gameMock)
     // expect(axios.get).toMatchInlineSnapshot();
   })
+
+  test('makes a PUT request to update game', async () => {
+    const gameMock = { id_jeu: '5', name: 'Jeu 10' }
+    axios.put.mockResolvedValue({
+      data: gameMock,
+    })
+    const games = await GameService.updateGame(2, gameMock)
+    expect(axios.put).toHaveBeenCalledWith(baseURL + '/game/' + 2, gameMock)
+    expect(axios.put).toHaveBeenCalledTimes(1)
+    expect(games.data).toStrictEqual(gameMock)
+    // expect(axios.get).toMatchInlineSnapshot();
+  })
 })
