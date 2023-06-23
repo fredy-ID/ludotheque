@@ -1,11 +1,21 @@
 import { afterEach, vi } from 'vitest'
 import { baseURL, PATH_TO_GAME_API } from '@/services/game.service.js'
+import GameModel from '../models/game.model'
 import axios from 'axios'
 
-export const GAME_GET_ALL_DATA = [{ data: [ { id_jeu: '1', name: 'Jeu 1' }, { id_jeu: '2', name: 'Jeu 2' }, { id_jeu: '2', name: 'Jeu 3' } ] }]
-export const GAME_GET_BY_ID_DATA = [{ data: { id_jeu: '2', name: 'Jeu 2' } }]
-export const GAME_POST_CREATE_DATA = { id_jeu: '4', name: 'Jeu 4' }
-export const GAME_PATCH_UPDATE_DATA = [{ data: { name: 'Jeu 10' } }]
+const game1 = new GameModel('Jeu 1', 1)
+const game2 = new GameModel('Jeu 2', 2)
+const game3 = new GameModel('Jeu 3', 3)
+const game4 = new GameModel('Jeu 4')
+const game10 = new GameModel()
+
+game10.id_jeu = 10
+game10.name = 'Jeu 10'
+
+export const GAME_GET_ALL_DATA = [{ data: [ game1, game2, game3 ] }]
+export const GAME_GET_BY_ID_DATA = [{ data: game2 }]
+export const GAME_POST_CREATE_DATA = game4
+export const GAME_PATCH_UPDATE_DATA = [{ data: game10 }]
 export const DEFAULT_TEST_ID = 2;
 
 
