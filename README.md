@@ -1,27 +1,34 @@
 # ludotheque
- Apprendre à faire des tests unitaires
+
+Un repo me servant référence pour apprendre à faire des tests unitaires en front (vuejs) et back (django)
+
+## Backend
  
-## Env
+## Créer et activer l'environnement virtuel
 
-`python -m virtualenv .env`
+```sh
+python -m virtualenv .env
+./.env\Scripts\activate
+```
+
 ou
-`py -m venv .env`
 
-## Activier l'environnement
+```sh
+python -m venv env
+./.env\Scripts\activate
+```
 
-`.\.env\Scripts\activate`
 
-## Install packages
+### Dépendances
+```sh
+pip install -r requirements.txt
+```
 
-`pip install -r requirements.txt`
+### Démarrer le serveur
+```sh
+python manage.py runserver
+```
 
-## Faire une migration de la bdd
-
-`py manage.py migrate`
-
-## Démarrer le serveur
-
-`python manage.py runserver`
 
 # Database
 
@@ -31,15 +38,13 @@ ou
 'HOST': '127.0.0.1',  
 'PORT': '5432',
 
-## Ajouter un superuser
+### Démarrer le serveur
+```sh
+python manage.py createsuperuser
+```
 
-`python manage.py createsuperuser`
 
 # Utilisation
-
-## Url
-
-- API (GET) : `localhost/game/` permet de créer ou d'accéder à tout les jeux
 
 ## Tests
 

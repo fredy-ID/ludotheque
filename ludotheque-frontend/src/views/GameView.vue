@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import GameService from '@/services/api.js'
+import GameService from '@/services/game.service.js'
 
 export default {
     methods: {
